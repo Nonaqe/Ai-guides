@@ -4,6 +4,12 @@ let activeCategory = 'all';
 let currentGuideIndex = 0;
 let currentTocItems = [];
 
+// State variables for Expandable Sections
+var isCategoriesExpanded = false;
+var DEFAULT_VISIBLE_CATEGORIES = 6;
+var visibleGuidesLimit = 12;
+var GUIDES_STEP = 12;
+
 // Category Definitions with SVG icons, descriptions and badges
 var CATEGORIES = [
   { 
@@ -87,11 +93,32 @@ var CATEGORIES = [
 
 let isInitialized = false;
 
+// Theme Toggle Logic
+function initTheme() {
+  const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+  if (savedTheme === 'dark' || (!savedTheme && typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (typeof document !== 'undefined') document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    if (typeof document !== 'undefined') document.documentElement.setAttribute('data-theme', 'light');
+  }
+}
+
+function toggleTheme() {
+  if (typeof document === 'undefined') return;
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('theme', newTheme);
+  }
+}
+
 // Main Initialization Function
 function initApp() {
   if (isInitialized) return;
   isInitialized = true;
 
+  initTheme();
   renderCategoryBlocks();
   renderCategoryFilterPills();
   renderGuidesGrid(typeof GUIDES_DATA !== 'undefined' ? GUIDES_DATA : []);
@@ -116,17 +143,19 @@ if (typeof window !== 'undefined' && window.addEventListener) {
 // Render Visual Category Cards / Blocks
 function renderCategoryBlocks() {
   const container = document.getElementById('categoriesBlocksGrid');
+  const wrapper = document.getElementById('categoriesExpandWrapper');
   if (!container) return;
 
   container.innerHTML = '';
   const data = typeof GUIDES_DATA !== 'undefined' ? GUIDES_DATA : [];
+  const categoryList = CATEGORIES.filter(c => c.id !== 'all');
 
-  // Render cards for specific categories (excluding 'all')
-  CATEGORIES.filter(c => c.id !== 'all').forEach(cat => {
+  categoryList.forEach((cat, index) => {
     const guideCount = data.filter(g => g.category === cat.id).length;
+    const isHidden = !isCategoriesExpanded && index >= DEFAULT_VISIBLE_CATEGORIES;
 
     const block = document.createElement('div');
-    block.className = `category-block-card ${activeCategory === cat.id ? 'active-category' : ''}`;
+    block.className = `category-block-card ${activeCategory === cat.id ? 'active-category' : ''} ${index >= DEFAULT_VISIBLE_CATEGORIES ? 'is-collapsible-card' : ''} ${isHidden ? 'is-hidden-card' : ''}`;
     block.onclick = () => selectCategoryAndScroll(cat.id);
 
     block.innerHTML = `
@@ -147,6 +176,52 @@ function renderCategoryBlocks() {
 
     container.appendChild(block);
   });
+
+  if (wrapper) {
+    if (categoryList.length > DEFAULT_VISIBLE_CATEGORIES) {
+      wrapper.innerHTML = `
+        <button type="button" class="btn-expand-more ${isCategoriesExpanded ? 'expanded' : ''}" onclick="toggleCategoriesExpand(event)">
+          <span>${isCategoriesExpanded ? 'Свернуть категории' : `Показать все категории (${categoryList.length})`}</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      `;
+    } else {
+      wrapper.innerHTML = '';
+    }
+  }
+}
+
+function toggleCategoriesExpand(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  isCategoriesExpanded = !isCategoriesExpanded;
+
+  const container = document.getElementById('categoriesBlocksGrid');
+  const btn = document.querySelector('#categoriesExpandWrapper .btn-expand-more');
+  if (!container) return;
+
+  const extraCards = container.querySelectorAll('.is-collapsible-card');
+  extraCards.forEach((card, idx) => {
+    if (isCategoriesExpanded) {
+      card.classList.remove('is-hidden-card');
+      card.style.animation = 'none';
+      card.offsetHeight; // trigger reflow
+      card.style.animation = `cardExpandIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 0.04}s both`;
+    } else {
+      card.classList.add('is-hidden-card');
+    }
+  });
+
+  if (btn) {
+    const categoryList = CATEGORIES.filter(c => c.id !== 'all');
+    btn.classList.toggle('expanded', isCategoriesExpanded);
+    const span = btn.querySelector('span');
+    if (span) {
+      span.textContent = isCategoriesExpanded ? 'Свернуть категории' : `Показать все категории (${categoryList.length})`;
+    }
+  }
 }
 
 // Helper Noun declension for Russian language
@@ -187,16 +262,19 @@ function renderCategoryFilterPills() {
   });
 }
 
-// Render All 19 Guides as Cards
+// Render Guides Cards with Batch Expansion
 function renderGuidesGrid(guides) {
   const container = document.getElementById('guidesGridContainer');
   const countText = document.getElementById('guidesCountText');
+  const wrapper = document.getElementById('guidesExpandWrapper');
   if (!container) return;
 
   const totalCount = typeof GUIDES_DATA !== 'undefined' ? GUIDES_DATA.length : guides.length;
+  const filteredCount = guides ? guides.length : 0;
+  const visibleGuides = guides.slice(0, visibleGuidesLimit);
 
   if (countText) {
-    countText.textContent = `Показано ${guides.length} из ${totalCount} гайдов`;
+    countText.textContent = `Показано ${visibleGuides.length} из ${filteredCount} гайдов`;
   }
 
   container.innerHTML = '';
@@ -209,15 +287,19 @@ function renderGuidesGrid(guides) {
         <button onclick="resetCategoryFilter()" style="margin-top: 16px; padding: 10px 20px; border-radius: 9999px; background: #0f172a; color: #fff; border: none; font-weight: 600; cursor: pointer;">Показать все гайды</button>
       </div>
     `;
+    if (wrapper) wrapper.innerHTML = '';
     return;
   }
 
-  guides.forEach((guide) => {
+  visibleGuides.forEach((guide) => {
     const card = document.createElement('div');
     card.className = 'guide-block-card';
     card.onclick = () => openReader(guide.id);
 
     const tagsHtml = guide.tags ? guide.tags.map(t => `<span class="card-tag-pill">${t}</span>`).join('') : '';
+    const aiModelsHtml = guide.aiModels && guide.aiModels.length
+      ? `<div class="card-ai-models">${guide.aiModels.map(m => `<span class="ai-model-pill">${m}</span>`).join('')}</div>`
+      : '';
     const readTime = Math.ceil((guide.wordCount || 1200) / 220);
 
     card.innerHTML = `
@@ -229,11 +311,12 @@ function renderGuidesGrid(guides) {
         <h3 class="card-main-title">${guide.title}</h3>
         <p class="card-focus-text">${guide.focus || ''}</p>
         <div class="card-tags-group">${tagsHtml}</div>
+        ${aiModelsHtml}
       </div>
 
       <div class="card-bottom-actions">
         <button class="btn-card-read" onclick="event.stopPropagation(); openReader('${guide.id}')">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 1 3-3h7z"></path></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><polyline points="14 2 14 8 11 6 8 8 8 2"></polyline></svg>
           <span>Читать гайд</span>
           <span class="read-time-pill">⏱ ${readTime} мин</span>
         </button>
@@ -246,11 +329,56 @@ function renderGuidesGrid(guides) {
 
     container.appendChild(card);
   });
+
+  if (wrapper) {
+    if (filteredCount > visibleGuidesLimit) {
+      const remaining = filteredCount - visibleGuidesLimit;
+      wrapper.innerHTML = `
+        <button class="btn-expand-more" onclick="showMoreGuides()">
+          <span>Показать ещё гайды (${remaining})</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      `;
+    } else if (visibleGuidesLimit > GUIDES_STEP && filteredCount > GUIDES_STEP) {
+      wrapper.innerHTML = `
+        <button class="btn-expand-more expanded" onclick="collapseGuides()">
+          <span>Свернуть каталог</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      `;
+    } else {
+      wrapper.innerHTML = '';
+    }
+  }
+}
+
+function showMoreGuides() {
+  visibleGuidesLimit += GUIDES_STEP;
+  const data = typeof GUIDES_DATA !== 'undefined' ? GUIDES_DATA : [];
+  const filtered = activeCategory === 'all' 
+    ? data 
+    : data.filter(g => g.category === activeCategory);
+  renderGuidesGrid(filtered);
+}
+
+function collapseGuides() {
+  visibleGuidesLimit = GUIDES_STEP;
+  const data = typeof GUIDES_DATA !== 'undefined' ? GUIDES_DATA : [];
+  const filtered = activeCategory === 'all' 
+    ? data 
+    : data.filter(g => g.category === activeCategory);
+  renderGuidesGrid(filtered);
+
+  const catalogSection = document.getElementById('popularGuidesSection');
+  if (catalogSection) {
+    catalogSection.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 // Category Filter Handler
 function filterByCategory(catId) {
   activeCategory = catId;
+  visibleGuidesLimit = GUIDES_STEP; // Reset limit when switching categories
   renderCategoryBlocks();
   renderCategoryFilterPills();
 
@@ -282,7 +410,8 @@ function setupSearchEvent() {
     const filtered = data.filter(g => 
       g.title.toLowerCase().includes(q) || 
       g.focus.toLowerCase().includes(q) ||
-      (g.tags && g.tags.some(t => t.toLowerCase().includes(q)))
+      (g.tags && g.tags.some(t => t.toLowerCase().includes(q))) ||
+      (g.aiModels && g.aiModels.some(m => m.toLowerCase().includes(q)))
     );
     renderGuidesGrid(filtered);
   });
@@ -317,8 +446,12 @@ function openReader(id) {
   const { html, toc } = parseMarkdownWithToc(guide.content || "");
   currentTocItems = toc;
 
+  const aiBarHtml = guide.aiModels && guide.aiModels.length
+    ? `<div class="reader-ai-models-bar"><span class="reader-ai-label">Подходящие ИИ:</span> ${guide.aiModels.map(m => `<span class="ai-model-pill-lg">${m}</span>`).join('')}</div>`
+    : '';
+
   if (bodyEl) {
-    bodyEl.innerHTML = html;
+    bodyEl.innerHTML = aiBarHtml + html;
   }
 
   renderTocSidebar(toc);
