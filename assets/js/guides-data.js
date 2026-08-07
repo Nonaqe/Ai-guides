@@ -2471,5 +2471,195 @@ var GUIDES_DATA = [
       "Claude",
       "Gemini"
     ]
+  },
+  {
+    "id": "101",
+    "title": "Midjourney v6.1: Полное руководство по идеальной фотореалистичной съёмке (Параметры --raw, --stylize и свет)",
+    "shortTitle": "Midjourney v6.1: Фотореализм и свет",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Студийная фотосессия, портреты, макросъемка, параметры --style raw, --stylize 50-250 и настройка освещения",
+    "tags": [
+      "Midjourney",
+      "Фотореализм",
+      "Промпты",
+      "Дизайн"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1450,
+    "content": "# Midjourney v6.1: Полное руководство по идеальной фотореалистичной съёмке\n\nГенерация фотореалистичных изображений в нейросети Midjourney v6.1 — это сочетание понимания оптики, параметров рендеринга и грамотного описания студийного освещения.\n\n## 1. Базовые параметры фотореализма\n\nДля получения неотличимого от снимка на DSLR-камеру изображения используйте следующие флаги:\n- `--style raw` — отключает художественную «дорисовку» Midjourney и сохраняет естественные пропорции и текстуру кожи.\n- `--stylize 50`...`150` (или `--s`) — предотвращает чрезмерную стилизацию. Чем ниже значение, тем ближе к реальной фотографии.\n- `--v 6.1` — актуальная версия движка с улучшенным рендерингом дефектов кожи, волос и глаз.\n\n```text\n/imagine prompt: A high-end editorial portrait of a 30-year-old female model, natural skin texture, freckles, soft daylight from a large window, shot on Hasselblad H6D-100c, 85mm lens, f/1.8 aperture, depth of field, neutral color grading --style raw --stylize 80 --ar 4:5 --v 6.1\n```\n\n## 2. Формула идеального фото-промпта\n\n1. **Субъект:** Указывайте возраст, тип внешности, эмоции и позу.\n2. **Освещение:** `softbox lighting`, `volumetric rim lighting`, `golden hour sunlight`, `cinematic neon backlighting`.\n3. **Оптика и камера:** `Hasselblad 100c`, `Canon EOS R5`, `85mm lens`, `f/1.4`, `shallow depth of field`.\n4. **Детализация:** `natural pores`, `subtle skin texture`, `film grain`, `RAW photo`.\n\n## 3. Практический пример: Предметная и Фуд-фотография\n\nДля съемки парфюмерии или премиальных блюд:\n\n```text\n/imagine prompt: Commercial studio photograph of a luxury glass perfume bottle with gold accents, resting on wet black marble, subtle water drops, cinematic dramatic rim lighting, soft reflections, 100mm macro lens, ultra-detailed --style raw --stylize 120 --ar 16:9 --v 6.1\n```\n\n## 4. Ошибки и рекомендации\n- **Избегайте слов-мусора:** `hyperrealistic`, `4k`, `8k`, `trending on artstation`. Они ухудшают результат в v6.1.\n- **Используйте параметры кадра:** `--ar 16:9` для пейзажей и обложек, `--ar 4:5` для Instagram/портретов, `--ar 9:16` для Stories.\n"
+  },
+  {
+    "id": "102",
+    "title": "Сохранение персонажей в Midjourney (Character Consistency): Технология --cref и --cw",
+    "shortTitle": "Midjourney Character Consistency (--cref)",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Генерация единого персонажа в разных ракурсах, одежде и локациях с помощью флагов --cref и --cw",
+    "tags": [
+      "Midjourney",
+      "Персонажи",
+      "Character Consistency",
+      "AI Art"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1380,
+    "content": "# Сохранение персонажей в Midjourney (Character Consistency): Технология --cref и --cw\n\nСоздание единого визуального героя для комиксов, рекламы или детских книг долгое время было главной проблемой AI-иллюстраторов. Параметр `--cref` (Character Reference) решает эту задачу.\n\n## 1. Как работает флаг --cref\n\nПараметр `--cref [URL изображения]` позволяет Midjourney перенести черты лица, прическу и стиль исходного персонажа на новый кадр.\n\n```text\n/imagine prompt: A young male tech entrepreneur in a modern office, wearing a navy blazer, smiling --cref https://s.mj.run/example_image.png --v 6.1\n```\n\n## 2. Управление весом сходства с помощью --cw\n\nПараметр `--cw` (Character Weight) принимает значения от `0` до `100`:\n- `--cw 100` (по умолчанию) — копирует лицо, волосы, одежду и аксессуары.\n- `--cw 0` — копирует **только черты лица**, позволяя полностью сменить одежду, прическу и окружение.\n\n### Пример смены одежды персонажа:\n```text\n/imagine prompt: The same young man wearing a leather jacket riding a motorcycle in Tokyo night streets --cref https://s.mj.run/example_image.png --cw 0 --ar 16:9 --v 6.1\n```\n\n## 3. Советы по повышению точности\n1. Используйте первоначальное изображение высокого качества с четким крупным планом лица.\n2. Сохраняйте описание ключевых черт персонажа в промпте (например, `young man with short brown hair and round glasses`).\n"
+  },
+  {
+    "id": "103",
+    "title": "Генерация точных логотипов, вектора и брендинга в Midjourney (--sref и стилизация)",
+    "shortTitle": "Midjourney: Логотипы и Векторный Брендинг",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Создание векторных логотипов, иконок, минималистичных фирменных знаков и айдентики",
+    "tags": [
+      "Midjourney",
+      "Логотипы",
+      "Вектор",
+      "Брендинг"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1320,
+    "content": "# Генерация точных логотипов, вектора и брендинга в Midjourney\n\nСоздание понятных, минималистичных логотипов требует специальной техники написания промптов и ограничения лишних деталей.\n\n## 1. Ключевые термины для векторной графики\n- `flat vector logo` — плоский векторный логотип.\n- `minimalist geometric emblem` — геометрическая эмблема.\n- `monoline symbol` — логотип в одну линию.\n- `white solid background` — чистый белый фон для легкой трассировки в Illustrator.\n\n## 2. Шаблон промпта для логотипа\n\n```text\n/imagine prompt: Minimalist vector logo of a coffee cup combined with a fox tail, clean lines, flat design, dual color palette, modern branding, white background --no realistic photos, gradients, shadows, text --style raw --v 6.1\n```\n\n## 3. Перевод графики в настоящий вектор (SVG)\nПосле генерации 2D-рисунка в Midjourney:\n1. Загрузите файл в онлайн-векторизатор (Vectorizer.ai или Adobe Illustrator Image Trace).\n2. Выполните трассировку в цветной или монохромный вектор.\n3. Сохраните готовый `.SVG` файл для использования на сайте или на печати.\n"
+  },
+  {
+    "id": "104",
+    "title": "Управление стилем и эстетикой: Использование --sref (Style Reference) и --sw",
+    "shortTitle": "Midjourney Style Reference (--sref)",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Копирование визуального стиля, палитры и рендера с референсов с помощью параметров --sref и --sw",
+    "tags": [
+      "Midjourney",
+      "Style Reference",
+      "Дизайн",
+      "AI Art"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1400,
+    "content": "# Управление стилем и эстетикой: Использование --sref и --sw\n\nФункция `--sref` (Style Reference) позволяет зафиксировать арт-стиль, цветовую гамму и манеру рисования любого изображения и применить её к абсолютно новым сюжетам.\n\n## 1. Использование флага --sref\n\nВы можете передать ссылку на изображение или используемый цифровой код стиля:\n```text\n/imagine prompt: A futuristic skyscraper in a desert oasis --sref https://s.mj.run/style_ref.jpg --v 6.1\n```\n\nИли использовать случайный код стиля из библиотеки Midjourney:\n```text\n/imagine prompt: A Cyberpunk street cafe --sref random --v 6.1\n```\n\n## 2. Настройка силы стиля (--sw)\nПараметр `--sw` (Style Weight) варьируется от `0` до `1000`:\n- `--sw 100` (дефолт) — сбалансированное влияние стиля.\n- `--sw 500`...`1000` — доминирующий перенос всех цветовых пятен и текстур референса.\n\n## 3. Комбинирование нескольких стилей\nВы можете указывать несколько ссылок на стили с индивидуальными весами:\n```text\n/imagine prompt: Floating islands in space --sref https://s.mj.run/style1.jpg::2 https://s.mj.run/style2.jpg::1 --v 6.1\n```\n"
+  },
+  {
+    "id": "105",
+    "title": "Midjourney для карточек маркетплейсов WB / Ozon: Инфографика, подиумы и 3D-рендеры товаров",
+    "shortTitle": "Midjourney для Wildberries & Ozon",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Создание 3D-подиумов, виртуальных студийных фонов и коммерческих концептов упаковки",
+    "tags": [
+      "Midjourney",
+      "Wildberries",
+      "Ozon",
+      "Маркетплейсы"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1390,
+    "content": "# Midjourney для карточек маркетплейсов WB / Ozon: Инфографика и 3D-рендеры\n\nКачественные фоны и подиумы повышают CTR карточки товара на Wildberries и Ozon на 25-40%.\n\n## 1. Промпт для 3D-подиумов под косметику и баночки\n\n```text\n/imagine prompt: Clean minimalist 3D display podium for cosmetic product mockup, pastel background, tropical leaves shadow, soft studio lighting, soft pastel colors, octane render, 8k --ar 3:4 --v 6.1\n```\n\n## 2. Промпты для бытовой техники и электроники\n\n```text\n/imagine prompt: Modern high-tech wooden kitchen countertop background, blurred cozy interior, morning sun rays, perfect depth of field, product presentation view --ar 3:4 --v 6.1\n```\n\n## 3. Интеграция товара в Photoshop\n1. Сгенерируйте чистый фон в Midjourney без самого товара.\n2. В вырезанную карточку вставьте ваш товар (крем, наушники, одежду).\n3. Добавьте падающую тень под товаром и поверх нанесите инфографику с преимуществами.\n"
+  },
+  {
+    "id": "106",
+    "title": "Генерация идеального текста и шрифтов внутри Midjourney v6.1",
+    "shortTitle": "Текст и надписи в Midjourney v6.1",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Правила написания чистых букв, вывесок, неоновых надписей и принтов на футболках",
+    "tags": [
+      "Midjourney",
+      "Текст",
+      "Типографика",
+      "Дизайн"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1310,
+    "content": "# Генерация идеального текста и шрифтов внутри Midjourney v6.1\n\nВ версии 6.1 Midjourney существенно улучшила распознавание и рендеринг текстовых строк.\n\n## 1. Синтаксис генерации текста\n\nТекст обязательно помещается в **двойные кавычки** `\"YOUR TEXT\"`:\n\n```text\n/imagine prompt: A neon sign on a brick wall reading \"NEON NIGHTS\" in glowing cyan script font, nighttime street background --style raw --v 6.1\n```\n\n## 2. Промпты для принтов на футболках и худи\n\n```text\n/imagine prompt: Vintage t-shirt graphic design with a roaring tiger and bold typography saying \"STAY WILD\", retro 80s aesthetic, isolated on black background --v 6.1\n```\n\n## 3. Главные правила\n- Держите надписи короткими (1-3 слова).\n- Используйте простые английские слова без сложных аббревиатур.\n- Всегда добавляйте контекст надписи (`glowing sign`, `bold serif font`, `chalkboard writing`).\n"
+  },
+  {
+    "id": "107",
+    "title": "Архитектура, Интерьер и Ландшафтный дизайн в Midjourney: Профессиональный промптинг",
+    "shortTitle": "Архитектура и Интерьеры в Midjourney",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Генерация экстерьеров зданий, интерьеров в стиле сканди/минимализм и ландшафтных проектов",
+    "tags": [
+      "Midjourney",
+      "Архитектура",
+      "Интерьер",
+      "Дизайн"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1420,
+    "content": "# Архитектура, Интерьер и Ландшафтный дизайн в Midjourney\n\nMidjourney позволяет архитекторам и дизайнерам интерьера мгновенно визуализировать концепты и презентовать клиентам мудборды.\n\n## 1. Скандинавский интерьер гостиной\n\n```text\n/imagine prompt: Photorealistic interior design of a Scandinavian living room, large panoramic windows, oak wood floor, beige linen sofa, indoor plant Monstera, warm morning sunlight, ArchDaily aesthetic --ar 16:9 --style raw --v 6.1\n```\n\n## 2. Современная загородная вилла (Экстерьер)\n\n```text\n/imagine prompt: Architectural photography of a modern minimalist villa, concrete and dark wood facade, infinity pool, pine forest surrounding, golden hour sunset, shot on Architonic magazine cover style --ar 16:9 --v 6.1\n```\n\n## 3. Ключевые термины для архитекторов\n- `ArchDaily photography`, `Architectural Digest style`.\n- `Panoramic glass facade`, `ambient warm lighting`, `isometric 3D floor plan`.\n"
+  },
+  {
+    "id": "108",
+    "title": "Создание бесшовных паттернов и текстур (--tile) для веб-дизайна, мерча и ткани",
+    "shortTitle": "Бесшовные паттерны Midjourney (--tile)",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Генерация повторимых seamless-паттернов, текстур дерева, мрамора и фракталов с помощью --tile",
+    "tags": [
+      "Midjourney",
+      "Паттерны",
+      "Текстуры",
+      "Seamless"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1330,
+    "content": "# Создание бесшовных паттернов и текстур (--tile) в Midjourney\n\nФлаг `--tile` превращает любое изображение в идеальный бесшовный паттерн, который можно дублировать до бесконечности без видимых стыков.\n\n## 1. Промпт для растительного паттерна ткани\n\n```text\n/imagine prompt: Seamless pattern of tropical monstera leaves and monstera flowers, watercolor style, soft pastel green and white background --tile --v 6.1\n```\n\n## 2. Промпт для текстуры мрамора / сайтов\n\n```text\n/imagine prompt: Seamless texture of dark navy blue luxury marble with golden veins, smooth finish --tile --v 6.1\n```\n\n## 3. Проверка бесшовности\nПроверить сгенерированный паттерн можно на бесплатных сервисах проверки (например, Seamless Pattern Checker). Загруженный паттерн можно использовать для печати на ткани, упаковочной бумаге или фоне сайтов.\n"
+  },
+  {
+    "id": "109",
+    "title": "Продвинутый Pan, Zoom Out, Vary (Region) и Inpainting: Точное редактирование кадров",
+    "shortTitle": "Редактирование и Inpainting в Midjourney",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Дорисовка деталей (Vary Region), отдаление камеры (Zoom Out 1.5x/2x) и расширение полотна (Pan)",
+    "tags": [
+      "Midjourney",
+      "Inpainting",
+      "Редактирование",
+      "AI Art"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1410,
+    "content": "# Продвинутый Pan, Zoom Out, Vary (Region) и Inpainting в Midjourney\n\nИнструменты встроенного редактирования Midjourney позволяют исправлять недочеты генерации без перехода в externe графические редакторы.\n\n## 1. Инструмент Vary (Region) / Inpainting\nЕсли на изображении понравился весь кадр, кроме одной детали (например, нужно добавить очки или заменить предмет):\n1. Нажмите кнопку **Vary (Region)** под сгенерированным кадром.\n2. Выделите лассо или прямоугольником нужную область.\n3. В поле промпта допишите желаемый объект (например, `stylish sunglasses`).\n\n## 2. Инструменты Zoom Out (1.5x / 2x / Custom Zoom)\nКнопки **Zoom Out** отдаляют объектив, дорисовывая окружение вокруг существующего центрального объекта.\n\n## 3. Инструмент Pan (Стрелки расширения)\nСтрелки **⬅️ ➡️ ⬆️ ⬇️** позволят расширить изображение в любую сторону, не меняя масштаба центральных объектов.\n"
+  },
+  {
+    "id": "110",
+    "title": "Монетизация Midjourney: Как продавать промпты, пресеты, стоковую графику и иллюстрации",
+    "shortTitle": "Монетизация Midjourney: 5 бизнес-моделей",
+    "category": "design_graphics",
+    "categoryName": "Дизайн & Графика",
+    "focus": "Заработок на продажах промпт-паков, стоковой графике, иллюстрациях для брендов и фрилансе",
+    "tags": [
+      "Midjourney",
+      "Монетизация",
+      "Заработок",
+      "Фриланс"
+    ],
+    "aiModels": [
+      "Midjourney"
+    ],
+    "wordCount": 1480,
+    "content": "# Монетизация Midjourney: Как продавать промпты и стоковую графику\n\nНавык работы с Midjourney v6.1 становится полноценной профессией AI-иллюстратора и креативного директора.\n\n## 1. Пять проверенных направлений монетизации\n\n### 1. Продажа промптов на PromptBase и FunPay\nСоздавайте протестированные наборы промптов (для UI-дизайна, фотосессий, 3D-икон) и продавайте их от $2.99 до $9.99 за пак.\n\n### 2. Стоковая графика (Adobe Stock, Freepik)\nМикростоки активно принимают AI-изображения. Востребованные ниши: 3D-абстрактные фоны, текстуры, праздничные иллюстрации.\n\n### 3. Оформление карточек для Wildberries и Ozon\nРазработка готовых сетов фонов и 3D-подиумов для продавцов маркетплейсов (от 3 000 до 15 000 руб за проект).\n\n### 4. Иллюстрации для обложек книг, альбомов и мерча\nСоздание уникальных арт-принтов для брендов одежды и музыкантов на фриланс-биржах.\n\n### 5. Создание виртуальных AI-аватаров\nГенерация персонажей для блогеров и брендов с помощью флага `--cref`.\n"
   }
 ];

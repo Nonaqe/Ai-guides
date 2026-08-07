@@ -1,0 +1,22 @@
+Сохранение персонажей в Midjourney (Character Consistency): Технология --cref и --cw
+
+Создание единого визуального героя для комиксов, рекламы или детских книг долгое время было главной проблемой AI-иллюстраторов. Параметр --cref (Character Reference) решает эту задачу.
+
+1. Как работает флаг --cref
+
+Параметр --cref [URL изображения] позволяет Midjourney перенести черты лица, прическу и стиль исходного персонажа на новый кадр.
+
+/imagine prompt: A young male tech entrepreneur in a modern office, wearing a navy blazer, smiling --cref https://s.mj.run/example_image.png --v 6.1
+
+2. Управление весом сходства с помощью --cw
+
+Параметр --cw (Character Weight) принимает значения от 0 до 100:
+- --cw 100 (по умолчанию) — копирует лицо, волосы, одежду и аксессуары.
+- --cw 0 — копирует **только черты лица**, позволяя полностью сменить одежду, прическу и окружение.
+
+Пример смены одежды персонажа:
+/imagine prompt: The same young man wearing a leather jacket riding a motorcycle in Tokyo night streets --cref https://s.mj.run/example_image.png --cw 0 --ar 16:9 --v 6.1
+
+3. Советы по повышению точности
+1. Используйте первоначальное изображение высокого качества с четким крупным планом лица.
+2. Сохраняйте описание ключевых черт персонажа в промпте (например, young man with short brown hair and round glasses).

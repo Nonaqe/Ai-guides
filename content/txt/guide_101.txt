@@ -1,0 +1,29 @@
+Midjourney v6.1: Полное руководство по идеальной фотореалистичной съёмке
+
+Генерация фотореалистичных изображений в нейросети Midjourney v6.1 — это сочетание понимания оптики, параметров рендеринга и грамотного описания студийного освещения.
+
+1. Базовые параметры фотореализма
+
+Для получения неотличимого от снимка на DSLR-камеру изображения используйте следующие флаги:
+- --style raw — отключает художественную «дорисовку» Midjourney и сохраняет естественные пропорции и текстуру кожи.
+- --stylize 50...150 (или --s) — предотвращает чрезмерную стилизацию. Чем ниже значение, тем ближе к реальной фотографии.
+- --v 6.1 — актуальная версия движка с улучшенным рендерингом дефектов кожи, волос и глаз.
+
+/imagine prompt: A high-end editorial portrait of a 30-year-old female model, natural skin texture, freckles, soft daylight from a large window, shot on Hasselblad H6D-100c, 85mm lens, f/1.8 aperture, depth of field, neutral color grading --style raw --stylize 80 --ar 4:5 --v 6.1
+
+2. Формула идеального фото-промпта
+
+1. **Субъект:** Указывайте возраст, тип внешности, эмоции и позу.
+2. **Освещение:** softbox lighting, volumetric rim lighting, golden hour sunlight, cinematic neon backlighting.
+3. **Оптика и камера:** Hasselblad 100c, Canon EOS R5, 85mm lens, f/1.4, shallow depth of field.
+4. **Детализация:** natural pores, subtle skin texture, film grain, RAW photo.
+
+3. Практический пример: Предметная и Фуд-фотография
+
+Для съемки парфюмерии или премиальных блюд:
+
+/imagine prompt: Commercial studio photograph of a luxury glass perfume bottle with gold accents, resting on wet black marble, subtle water drops, cinematic dramatic rim lighting, soft reflections, 100mm macro lens, ultra-detailed --style raw --stylize 120 --ar 16:9 --v 6.1
+
+4. Ошибки и рекомендации
+- **Избегайте слов-мусора:** hyperrealistic, 4k, 8k, trending on artstation. Они ухудшают результат в v6.1.
+- **Используйте параметры кадра:** --ar 16:9 для пейзажей и обложек, --ar 4:5 для Instagram/портретов, --ar 9:16 для Stories.

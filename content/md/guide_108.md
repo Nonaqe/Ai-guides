@@ -1,0 +1,18 @@
+# Создание бесшовных паттернов и текстур (--tile) в Midjourney
+
+Флаг `--tile` превращает любое изображение в идеальный бесшовный паттерн, который можно дублировать до бесконечности без видимых стыков.
+
+## 1. Промпт для растительного паттерна ткани
+
+```text
+/imagine prompt: Seamless pattern of tropical monstera leaves and monstera flowers, watercolor style, soft pastel green and white background --tile --v 6.1
+```
+
+## 2. Промпт для текстуры мрамора / сайтов
+
+```text
+/imagine prompt: Seamless texture of dark navy blue luxury marble with golden veins, smooth finish --tile --v 6.1
+```
+
+## 3. Проверка бесшовности
+Проверить сгенерированный паттерн можно на бесплатных сервисах проверки (например, Seamless Pattern Checker). Загруженный паттерн можно использовать для печати на ткани, упаковочной бумаге или фоне сайтов.

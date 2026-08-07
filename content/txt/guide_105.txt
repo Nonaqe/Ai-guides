@@ -1,0 +1,16 @@
+Midjourney для карточек маркетплейсов WB / Ozon: Инфографика и 3D-рендеры
+
+Качественные фоны и подиумы повышают CTR карточки товара на Wildberries и Ozon на 25-40%.
+
+1. Промпт для 3D-подиумов под косметику и баночки
+
+/imagine prompt: Clean minimalist 3D display podium for cosmetic product mockup, pastel background, tropical leaves shadow, soft studio lighting, soft pastel colors, octane render, 8k --ar 3:4 --v 6.1
+
+2. Промпты для бытовой техники и электроники
+
+/imagine prompt: Modern high-tech wooden kitchen countertop background, blurred cozy interior, morning sun rays, perfect depth of field, product presentation view --ar 3:4 --v 6.1
+
+3. Интеграция товара в Photoshop
+1. Сгенерируйте чистый фон в Midjourney без самого товара.
+2. В вырезанную карточку вставьте ваш товар (крем, наушники, одежду).
+3. Добавьте падающую тень под товаром и поверх нанесите инфографику с преимуществами.
