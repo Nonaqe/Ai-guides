@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guides — Практические гайды по ИИ и монетизации</title>
+  <meta name="description" content="Полный каталог готовых практических инструкций по монетизации нейросетей, маркетингу, маркетплейсам и Claude Code.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Favicon Star Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="shortcut icon" href="assets/images/favicon.svg">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="header-logo">
+        <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+        </svg>
+        <span>AI Guides</span>
+      </a>
+
+      <nav class="header-nav">
+        <a href="#popularGuidesSection" class="nav-link active">Гайды</a>
+        <a href="#categoriesSection" class="nav-link">Категории</a>
+        <a href="#popularGuidesSection" class="nav-link">Инструменты</a>
+        <a href="#footerSection" class="nav-link">О сайте</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="https://funpay.com/users/4347432/" target="_blank" rel="noopener noreferrer" class="btn-dark-main" style="padding: 9px 20px; font-size: 13.5px; text-decoration: none;">
+          Написать мне
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="site-wrapper">
+    <!-- Hero Banner -->
+    <section class="hero-container">
+      <div class="hero-left">
+        <div class="pill-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+          Все гайды по ИИ в одном месте
+        </div>
+        
+        <h1 class="hero-heading">Ваш универсальный справочник по ИИ</h1>
+        
+        <p class="hero-description">
+          Полный каталог готовых практических инструкций по монетизации нейросетей, маркетингу, маркетплейсам и программированию с Claude Code.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#popularGuidesSection" onclick="resetCategoryFilter()" class="btn-dark-main">
+            Смотреть все гайды
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#categoriesSection" class="btn-light-main">Все категории</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <img src="assets/images/ai_books_illustration.jpg" alt="AI Guides Books Stack 3D Illustration" class="hero-illustration-img">
+      </div>
+    </section>
+
+    <!-- Category Cards Section (Visual Blocks) -->
+    <section class="categories-blocks-section" id="categoriesSection">
+      <div class="section-header-block">
+        <div>
+          <span class="pill-badge-sub">Разделы & Направления</span>
+          <h2 class="section-title">Категории гайдов</h2>
+          <p class="section-subtitle">Выберите интересующую сферу применения ИИ для быстрого доступа к практическим инструкциям</p>
+        </div>
+      </div>
+      
+      <div class="categories-cards-grid" id="categoriesBlocksGrid">
+        <!-- Rendered via app.js -->
+      </div>
+    </section>
+
+    <!-- Category Filter Pills Bar -->
+    <div class="filter-pills-bar" id="categoriesGrid">
+      <!-- Filter Pills Rendered via app.js -->
+    </div>
+
+    <!-- Guides Cards Grid Section -->
+    <section class="guides-section" id="popularGuidesSection">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="display: inline-block; margin-right: 12px;">Каталог гайдов</h2>
+          <span id="guidesCountText" style="font-size: 14px; color: var(--text-muted); font-weight: 500;">Показано 100 из 100 гайдов</span>
+        </div>
+        <a href="#popularGuidesSection" onclick="resetCategoryFilter()" class="btn-auth" style="text-decoration: none; font-size: 13px;">
+          Сбросить фильтр
+        </a>
+      </div>
+
+      <div class="guides-grid-cards" id="guidesGridContainer">
+        <!-- 19 Beautiful Cards Rendered via app.js -->
+      </div>
+    </section>
+
+    <!-- FunPay Direct Message CTA Banner -->
+    <section class="cta-banner">
+      <div class="cta-left">
+        <div class="cta-icon-bg">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+          </svg>
+        </div>
+        <div class="cta-text">
+          <h3>Не нашли нужный гайд?</h3>
+          <p>Напишите мне в личные сообщения на FunPay, и я быстро подготовлю материал под вашу задачу.</p>
+        </div>
+      </div>
+
+      <div class="cta-form">
+        <a href="https://funpay.com/users/4347432/" target="_blank" rel="noopener noreferrer" class="btn-dark-main">
+          Написать мне
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer-exact" id="footerSection">
+    <div class="site-wrapper">
+      <div class="footer-columns">
+        <div>
+          <a href="#" class="header-logo" style="margin-bottom: 12px;">
+            <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+            </svg>
+            <span>AI Guides</span>
+          </a>
+          <p style="color: var(--text-muted); font-size: 13.5px;">Все гайды по ИИ в одном месте.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul class="footer-links">
+            <li><a href="#popularGuidesSection" onclick="resetCategoryFilter()">Все гайды</a></li>
+            <li><a href="#categoriesSection">Категории</a></li>
+            <li><a href="#footerSection">О сайте</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Поддержка</h4>
+          <ul class="footer-links">
+            <li><a href="https://funpay.com/users/4347432/" target="_blank">Написать на FunPay</a></li>
+            <li><a href="https://funpay.com/users/4347432/" target="_blank">Заказать гайд</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Мы в сети</h4>
+          <div class="social-icons">
+            <a href="https://funpay.com/users/4347432/" target="_blank" rel="noopener noreferrer" class="social-circle" title="Профиль FunPay">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 AI Guides. Все права защищены. Все гайды доступны в .TXT и .MD.</span>
+        <div class="legal-links">
+          <a href="#">Политика конфиденциальности</a>
+          <a href="#">Условия использования</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Full Guide Reader Page View -->
+  <div class="reader-page-overlay" id="modalOverlay">
+    <!-- Reading Progress Bar -->
+    <div class="reader-progress-track">
+      <div class="reader-progress-bar" id="readerProgressBar"></div>
+    </div>
+
+    <!-- Reader Sticky Top Bar -->
+    <header class="reader-top-bar">
+      <div class="reader-bar-left">
+        <button class="btn-back-catalog" id="backToCatalogBtn" onclick="closeModal()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Назад к каталогу</span>
+        </button>
+        <span class="reader-meta-divider">|</span>
+        <span class="reader-cat-badge" id="readerCategoryBadge">Программирование</span>
+        <span class="reader-read-time" id="readerReadTime">⏱ 6 мин чтения</span>
+      </div>
+
+      <h1 class="reader-bar-title" id="modalTitleText">Название гайда</h1>
+
+      <div class="reader-bar-actions">
+        <button class="btn-reader-action" id="copyTxtBtn" title="Копировать текст">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Копировать
+        </button>
+        <button class="btn-reader-action" id="downloadTxtBtn" title="Скачать .TXT">.TXT</button>
+        <button class="btn-reader-action active-dark" id="downloadMdBtn" title="Скачать .MD">.MD</button>
+        <button class="reader-close-circle" id="closeModalBtn" aria-label="Закрыть">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Reader Layout: Sidebar TOC + Article Body -->
+    <div class="reader-main-container">
+      <aside class="reader-sidebar-toc">
+        <div class="toc-sticky-wrapper">
+          <h4 class="toc-heading">Оглавление гайда</h4>
+          <nav class="toc-list-nav" id="readerTocContainer">
+            <!-- TOC Generated Dynamically -->
+          </nav>
+        </div>
+      </aside>
+
+      <main class="reader-article-viewport" id="readerViewport">
+        <article class="reader-article-body" id="guideContent">
+          <!-- Rendered Guide Article Content -->
+        </article>
+
+        <!-- Bottom Guide Navigation Switcher -->
+        <nav class="reader-footer-nav" id="guideFooterNav">
+          <!-- Prev / Next guide cards rendered via app.js -->
+        </nav>
+      </main>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Наверх" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/js/guides-data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
