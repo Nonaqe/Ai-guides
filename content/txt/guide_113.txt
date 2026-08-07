@@ -1,0 +1,28 @@
+Генерация и дебаг кода в Grok 3
+
+Grok 3 показывает выдающиеся результаты в задачах написания кода, рефакторинга и парсинга данных.
+
+1. Создание асинхронного парсера на Python
+
+Запрос к Grok 3: Напиши асинхронный скрапер на httpx и BeautifulSoup для сбора новостей
+import httpx
+from bs4 import BeautifulSoup
+import asyncio
+
+async def fetch_news():
+    url = "https://news.ycombinator.com/"
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
+        titles = [span.text for span in soup.select(".titleline > a")]
+        return titles[:10]
+
+if __name__ == "__main__":
+    news = asyncio.run(fetch_news())
+    for i, title in enumerate(news, 1):
+        print(f"{i}. {title}")
+
+2. Поиск уязвимостей в коде
+
+Передайте фрагмент кода в Grok с промптом:
+Проведи безопасность и найди race condition / SQL-инъекцию в этом фрагменте на Go.
